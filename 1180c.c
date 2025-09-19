@@ -3,24 +3,22 @@
 */
 #include <stdio.h>
 #include <stdlib.h>
-#include <iostream>
-using namespace std;
 
 int main(){
     
     int tamanho;
     
-    cin >> tamanho;
+    scanf("%d", &tamanho);
 
     int *vetor = (int*) malloc(tamanho * sizeof(int));
 
     if (vetor == NULL){
-        cout << "erro de alocação" << endl;
+        printf("erro de alocação");
         return 1;
     }
 
     for (int i = 0; i < tamanho; i++){
-        cin >> vetor[i];
+        scanf("%d", &vetor[i]);
     }
 
     int menor = vetor[0];
@@ -33,8 +31,8 @@ int main(){
         }
     }
 
-    cout << "Menor valor: " << menor << endl;
-    cout << "Posicao: " << posicao << endl;
+    printf("Menor valor: %d\n", menor);
+    printf("Posicao: %d\n", posicao);
 
     free(vetor);
 
