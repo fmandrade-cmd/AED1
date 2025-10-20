@@ -1,3 +1,19 @@
+/******************************************************************************
+ * Disciplina: Algoritmos e Estruturas de Dados I
+ * Período:    2º Semestre - 2º Termo
+ * Projeto:    Exercícios Que compõesm a nota
+ *
+ * Aluno(a):   Fábio Miguel de Andrade
+ * Matrícula:  176.482
+ * Data:       19/10/2025
+ *
+ * Arquivo:    1068a.c
+ *
+ * Descrição:  Implementação do algoritmo do contador para verificar o 
+ * balanceamento de parênteses em expressões. 
+ ******************************************************************************/
+
+
 #include <stdio.h>
 #include <string.h>
 
