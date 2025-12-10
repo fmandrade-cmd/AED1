@@ -1,15 +1,25 @@
+/******************************************************************************
+ * Disciplina: Algoritmos e Estruturas de Dados I
+ * Período:    2º Semestre - 2º Termo
+ * Projeto:    Exercícios Que compõem a nota
+ *
+ * Aluno(a):   Fábio Miguel de Andrade
+ * Matrícula:  176.482
+ * Data:       19/10/2025
+ *
+ * Arquivo:    1566_insertionsort.c
+ ******************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
 
-// Função clássica do Insertion Sort
-void insertionSort(int arr[], int n) {
-    int i, chave, j;
+void insertionSort(int *arr, int n) {
+    int i, j, chave;
+    
     for (i = 1; i < n; i++) {
         chave = arr[i];
         j = i - 1;
-
-        // Move os elementos do arr[0..i-1] que são maiores que a chave
-        // para uma posição à frente de sua posição atual
+        
+        // Move os elementos maiores que a chave uma posição à frente
         while (j >= 0 && arr[j] > chave) {
             arr[j + 1] = arr[j];
             j = j - 1;
@@ -18,44 +28,51 @@ void insertionSort(int arr[], int n) {
     }
 }
 
-void resolver() {
-    int NC; // Número de Cidades
-    if (scanf("%d", &NC) != 1) return;
-
-    while (NC--) {
-        int N;
-        scanf("%d", &N);
-
-        // Alocação dinâmica é necessária pois 3 milhões de inteiros
-        // ocupam ~12MB, o que excede o limite padrão da stack (pilha).
-        int *alturas = (int*)malloc(N * sizeof(int));
-        
-        if (alturas == NULL) {
-            // Caso falhe a alocação de memória
-            exit(1);
+void imprimirArray(int *arr, int n) {
+    for (int i = 0; i < n; i++) {
+        printf("%d", arr[i]);
+        if (i < n - 1) {
+            printf(" ");
         }
-
-        // Leitura dos dados
-        for (int i = 0; i < N; i++) {
-            scanf("%d", &alturas[i]);
-        }
-
-        // Ordenação usando Insertion Sort
-        insertionSort(alturas, N);
-
-        // Impressão dos dados ordenados
-        for (int i = 0; i < N; i++) {
-            if (i > 0) printf(" ");
-            printf("%d", alturas[i]);
-        }
-        printf("\n");
-
-        // Liberação da memória
-        free(alturas);
     }
+    printf("\n");
 }
 
 int main() {
-    resolver();
+    int NC, N;
+    int cont = 0;
+    
+    // Número de Casos de Teste - Cidades
+    scanf("%d", &NC);
+    
+    while (cont < NC) {
+        // Número de Pessoas na cidade NC
+        scanf("%d", &N);
+        
+        // Aloca array para armazenar as alturas
+        int *alturas = (int *)malloc(N * sizeof(int));
+        
+        if (alturas == NULL) {
+            printf("Erro de alocacao!\n");
+            return 1;
+        }
+        
+        // Lê as alturas
+        for (int i = 0; i < N; i++) {
+            scanf("%d", &alturas[i]);
+        }
+        
+        // Ordena usando Insertion Sort
+        insertionSort(alturas, N);
+        
+        // Imprime o array ordenado
+        imprimirArray(alturas, N);
+        
+        // Libera memória
+        free(alturas);
+        
+        cont++;
+    }
+    
     return 0;
 }
